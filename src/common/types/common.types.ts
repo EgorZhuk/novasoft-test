@@ -7,5 +7,3 @@ export type UpdateTaskModelType = {
   title?: string
   status?: boolean
 }
-
-export type FilterValuesType = 'all' | 'active' | 'completed';

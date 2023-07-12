@@ -1,11 +1,12 @@
 import React from 'react';
 import {AddTaskItemForm} from 'common/components/AddTaskItemForm/AddTaskItemForm';
-import {EditableSpan} from 'common/components/EditableTitile/EditableTitle';
 import { useAppSelector} from 'common/hooks/useAppDispatch';
-import {taskActions} from 'features/tasks/tasks.reducer';
+import {taskActions} from 'features/TasksList/tasks.reducer';
 import {useActions} from 'common/hooks/useActions';
-import {selectTasks} from 'features/tasks/tasks.selector';
-import {TasksList} from 'features/tasks/TasksList';
+import {selectTasks} from 'features/TasksList/tasks.selector';
+import {TasksList} from 'features/TasksList/TasksList';
+import {Box, Container} from '@mui/material';
+import TodolistTitle from 'features/TodolistTitle/TodolistTitle';
 
 const Todolist = () => {
   const {addTask}  = useActions(taskActions)
@@ -16,15 +17,13 @@ const Todolist = () => {
   }
   return (
     <div>
-      <div>
-        Todolist
-      </div>
-      <div>
-        <AddTaskItemForm addItem={addTaskCallback}/>
-      </div>
-      <div>
-       <TasksList tasks={tasks}/>
-      </div>
+      <Container maxWidth="sm" >
+        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh', padding: '2em' }}>
+          <TodolistTitle/>
+          <AddTaskItemForm addItem={addTaskCallback}/>
+          <TasksList tasks={tasks}/>
+        </Box>
+      </Container>
     </div>
   );
 };

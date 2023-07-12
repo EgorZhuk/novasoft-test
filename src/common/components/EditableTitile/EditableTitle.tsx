@@ -1,12 +1,13 @@
 import React, {ChangeEvent, FC, memo, useState} from 'react';
-import { TextField } from '@mui/material';
+import {IconButton, TextField} from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 
 type Props = {
   value: string
   onChange: (newValue: string) => void
 }
 
-export const EditableSpan: FC<Props> = memo( ({value, onChange}: Props) => {
+export const EditableTitle: FC<Props> = memo( ({value, onChange}: Props) => {
   let [editMode, setEditMode] = useState(false);
   let [title, setTitle] = useState(value);
 
@@ -24,5 +25,13 @@ export const EditableSpan: FC<Props> = memo( ({value, onChange}: Props) => {
 
   return editMode
     ?    <TextField value={title} onChange={changeTitle} autoFocus onBlur={activateViewMode} />
-    : <span onDoubleClick={activateEditMode}>{value}</span>
+    :
+      <span onDoubleClick={activateEditMode}>{value}
+        <IconButton onClick={activateEditMode}>
+        <EditIcon/>
+      </IconButton>
+      </span>
+
+
+
 });

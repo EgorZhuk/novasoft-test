@@ -1,6 +1,6 @@
 import {AnyAction, combineReducers} from 'redux';
 import {configureStore, ThunkDispatch} from '@reduxjs/toolkit';
-import {taskReducer} from 'features/tasks/tasks.reducer';
+import {taskReducer} from 'features/TasksList/tasks.reducer';
 
 const rootReducer = combineReducers({
   tasks: taskReducer
